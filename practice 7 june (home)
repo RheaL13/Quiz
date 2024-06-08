@@ -1,0 +1,166 @@
+import tkinter as tk
+from tkinter import font
+from tkinter import messagebox
+
+class FirstWindow:
+    def __init__(self):
+        self.firstwindow = tk.Tk()
+        self.firstwindow.geometry("1200x750")
+        self.firstwindow.title("Overconsumption Quiz")
+        self.firstwindow.configure(bg="oldlace")
+        self.firstwindow.resizable(False, False)
+
+        self.signup_window = None
+        self.login_window = None
+
+        class Boldtitle(tk.Label):
+            def __init__(self, master=None, **kwargs):
+                super().__init__(master, **kwargs)
+                bold_font = font.Font(self, self.cget("font"))
+                bold_font.configure(weight="bold")
+                self.configure(font=bold_font)
+
+        # Title code
+        title = Boldtitle(self.firstwindow, text="OVERCONSUMPTION QUIZ",
+                          font=("Helvetica", 40))
+        title.pack(pady=23)
+
+        # Login / Sign Up / Exit buttons
+        login_button = tk.Button(self.firstwindow, text='LOGIN', width=10, height=2,
+                                 fg="green", bg="white", command=self.login)
+        signup_button = tk.Button(self.firstwindow, text='SIGN UP', width=10, height=2,
+                                  fg="green", bg="white", command=self.signup)
+        exit_button = tk.Button(self.firstwindow, text='EXIT', width=10, height=2,
+                                fg="white", bg="black", command=self.check_exit)
+
+        login_button.place(x=1000, y=35)
+        signup_button.place(x=1100, y=35)
+        exit_button.place(x=1100, y=685)
+
+        # Text about program
+        program_text = Boldtitle(self.firstwindow, text="Text about program",
+                                 font=("Helvetica", 20))
+        program_text.pack(pady=50)
+
+        # Sidebar buttons
+        self.create_sidebar()
+
+        self.firstwindow.mainloop()
+
+    def create_sidebar(self):
+        buttons = [
+            ("HOME", self.open_popup),
+            ("QUIZ", self.open_popup),
+            ("SUCCESS\nSTORIES", self.open_popup),
+            ("ALTERNATIVE\nPRODUCTS", self.open_popup),
+            ("ABOUT", self.open_popup),
+            ("HELP", self.open_popup)
+        ]
+        for i, (text, command) in enumerate(buttons):
+            btn = tk.Button(self.firstwindow, text=text, width=10, height=2,
+                            fg="green", bg="white", command=command)
+            btn.place(x=50, y=50 + i * 100)
+
+    def check_exit(self):
+        popup_e = tk.Toplevel()
+        popup_e.title("Exit")
+        popup_e.geometry("190x100")
+        popup_e.resizable(False, False)
+
+        label = tk.Label(popup_e, text="Are you sure you want\n to exit now?",
+                         font=("Helvetica", 13))
+        label.pack()
+
+        yes_button = tk.Button(popup_e, text="Yes", command=self.firstwindow.destroy)
+        yes_button.place(x=60, y=65)
+
+        no_button = tk.Button(popup_e, text="No", command=popup_e.destroy)
+        no_button.place(x=100, y=65)
+
+    def open_popup(self):
+        popup = tk.Toplevel()
+        popup.title("Warning")
+        popup.geometry("250x130")
+        popup.resizable(False, False)
+
+        label = tk.Label(popup, text="Please login or sign up first please.")
+        label.place(x=30, y=20)
+
+        close_button = tk.Button(popup, text="Close", command=popup.destroy)
+        close_button.place(x=95, y=90)
+
+    def signup(self):
+        if self.login_window:
+            self.login_window.destroy()
+            self.login_window = None
+
+        if not self.signup_window:
+            self.signup_window = tk.Toplevel()
+            self.signup_window.title("Sign Up Page")
+            self.signup_window.geometry("300x300")
+            self.signup_window.resizable(False, False)
+
+            frame2 = tk.Frame(self.signup_window)
+            frame2.pack(expand=True)
+
+            signupbtn = tk.Button(self.signup_window, text="Login", font=("Helvetica", 11),
+                                  command=self.login)
+            signupbtn.place(x=225, y=10)
+
+            title = tk.Label(self.signup_window, text="SIGN UP", font=("Helvetica", 12))
+            title.place(x=130, y=15)
+
+            label_username = tk.Label(frame2, text="Username", font=("Helvetica", 11))
+            label_username.pack(pady=(0, 5))
+
+            entry_username = tk.Entry(frame2)
+            entry_username.pack(pady=(0, 10))
+
+            label_password = tk.Label(frame2, text="Password", font=("Helvetica", 11))
+            label_password.pack(pady=(0, 5))
+
+            entry_password = tk.Entry(frame2, show="*")
+            entry_password.pack(pady=(0, 20))
+
+            login_button = tk.Button(frame2, text="Next", font=("Helvetica", 11))
+            login_button.pack()
+
+    def login(self):
+        if self.signup_window:
+            self.signup_window.destroy()
+            self.signup_window = None
+
+        if not self.login_window:
+            self.login_window = tk.Toplevel()
+            self.login_window.title("Login Page")
+            self.login_window.geometry("300x300")
+            self.login_window.resizable(False, False)
+
+            frame = tk.Frame(self.login_window)
+            frame.pack(expand=True)
+
+            signupbtn = tk.Button(self.login_window, text="Sign Up", font=("Helvetica", 11),
+                                  command=self.signup)
+            signupbtn.place(x=225, y=10)
+
+            title = tk.Label(self.login_window, text="LOGIN", font=("Helvetica", 12))
+            title.place(x=130, y=15)
+
+            label_username = tk.Label(frame, text="Username", font=("Helvetica", 11))
+            label_username.pack(pady=(0, 5))
+
+            entry_username = tk.Entry(frame)
+            entry_username.pack(pady=(0, 10))
+
+            label_password = tk.Label(frame, text="Password", font=("Helvetica", 11))
+            label_password.pack(pady=(0, 5))
+
+            entry_password = tk.Entry(frame, show="*")
+            entry_password.pack(pady=(0, 20))
+
+            login_button = tk.Button(frame, text="Next", font=("Helvetica", 11))
+            login_button.pack()
+
+
+if __name__ == "__main__":
+    FirstWindow()
