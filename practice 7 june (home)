@@ -161,6 +161,5 @@ class FirstWindow:
             login_button = tk.Button(frame, text="Next", font=("Helvetica", 11))
             login_button.pack()
 
-
 if __name__ == "__main__":
     FirstWindow()
