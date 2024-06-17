@@ -1,0 +1,34 @@
+#import everything from tkinter and import messagebox as mb from tkinter
+from tkinter import *
+# from tkinter import messagebox as mb
+import tkinter as tk
+import tkinter
+import tkinter as tk
+from tkinter import font
+from tkinter import *      
+from tkinter.ttk import *
+
+# Window for login / sign up page
+class signin:
+	# Let's create the Tkinter window
+	window = tkinter.Tk()
+	window.geometry("600x500")
+	window.title("Login")
+
+	# You will create two text labels namely 'username' and 'password' and and two input labels for them
+	tkinter.Label(window, text = "Create an account or sign in:").grid(row = 0)
+	tkinter.Label(window, text = "Username").grid(row = 1, column = 0) #'username' is placed on position 00 (row - 0 and column - 0)
+	# 'Entry' class is used to display the input-field for 'username' text label
+	tkinter.Entry(window).grid(row = 1, column = 0) # first input-field is placed on position 01 (row - 0 and column - 1)
+	tkinter.Label(window, text = "Password").grid(row = 2, column = 0) #'password' is placed on position 10 (row - 1 and column - 0)
+	tkinter.Entry(window).grid(row = 2, column = 0) #second input-field is placed on position 11 (row - 1 and column - 1)
+
+	tkinter.Label(window, text = "Or are you an existing user?").place(x = 2, y = 80)
+	var1 = IntVar()
+	Checkbutton(window, text='yes', variable=var1).place(x = 2, y = 100)
+
+	# Create Object  
+	btn = tkinter.Button(window, text = 'Done', command = window.destroy) 
+	btn.place(x=250,y=400)                      
+	
+	window.mainloop() 

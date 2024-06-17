@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import font
 from tkinter import messagebox
+import tkinter as tk
+from PIL import Image, ImageTk
 
 class FirstWindow:
     def __init__(self):
@@ -26,16 +28,32 @@ class FirstWindow:
         title.pack(pady=23)
 
         # Login / Sign Up / Exit buttons
-        login_button = tk.Button(self.firstwindow, text='LOGIN', width=10, height=2,
-                                 fg="green", bg="white", command=self.login)
-        signup_button = tk.Button(self.firstwindow, text='SIGN UP', width=10, height=2,
-                                  fg="green", bg="white", command=self.signup)
-        exit_button = tk.Button(self.firstwindow, text='EXIT', width=10, height=2,
-                                fg="white", bg="black", command=self.check_exit)
+        login_button = tk.Button(self.firstwindow, text='LOGIN', width=10, 
+                                 height=2, fg="green", bg="white", 
+                                 command=self.login)
+        signup_button = tk.Button(self.firstwindow, text='SIGN UP', width=10, 
+                                  height=2, fg="green", bg="white", 
+                                  command=self.signup)
+        exit_button = tk.Button(self.firstwindow, text='EXIT', width=10, 
+                                height=2,fg="white", bg="black", 
+                                command=self.check_exit)
 
         login_button.place(x=1000, y=35)
         signup_button.place(x=1100, y=35)
         exit_button.place(x=1100, y=685)
+
+        # code to add a picture to first window
+        # Load and display an image 
+        #(replace 'your_logo.png' with the path to your image file)
+        image = Image.open('picture1.png')
+        image = ImageTk.PhotoImage(image)
+
+        # Resize the image using resize() method                                   !!!!!
+        #resize_image = image.resize((width, height))
+
+        # Create a label to display the image
+        image_label = tk.Label(self.firstwindow, image=image)
+        image_label.place(x = 250, y = 150)
 
         # Text about program
         program_text = Boldtitle(self.firstwindow, text="Text about program",
@@ -56,6 +74,9 @@ class FirstWindow:
             ("ABOUT", self.open_popup),
             ("HELP", self.open_popup)
         ]
+        # # create line seperating the buttons and rest of program                   !!!!
+        # self.firstwindow.create_line(100,200,200,35, width=5)
+
         for i, (text, command) in enumerate(buttons):
             btn = tk.Button(self.firstwindow, text=text, width=10, height=2,
                             fg="green", bg="white", command=command)
@@ -71,7 +92,8 @@ class FirstWindow:
                          font=("Helvetica", 13))
         label.pack()
 
-        yes_button = tk.Button(popup_e, text="Yes", command=self.firstwindow.destroy)
+        yes_button = tk.Button(popup_e, text="Yes", 
+                               command=self.firstwindow.destroy)
         yes_button.place(x=60, y=65)
 
         no_button = tk.Button(popup_e, text="No", command=popup_e.destroy)
@@ -103,27 +125,33 @@ class FirstWindow:
             frame2 = tk.Frame(self.signup_window)
             frame2.pack(expand=True)
 
-            signupbtn = tk.Button(self.signup_window, text="Login", font=("Helvetica", 11),
-                                  command=self.login)
+            signupbtn = tk.Button(self.signup_window, text="Login", 
+                                  font=("Helvetica", 11), command=self.login)
             signupbtn.place(x=225, y=10)
 
-            title = tk.Label(self.signup_window, text="SIGN UP", font=("Helvetica", 12))
+            title = tk.Label(self.signup_window, text="SIGN UP", 
+                             font=("Helvetica", 12))
             title.place(x=130, y=15)
 
-            label_username = tk.Label(frame2, text="Username", font=("Helvetica", 11))
+            label_username = tk.Label(frame2, text="Username", 
+                                      font=("Helvetica", 11))
             label_username.pack(pady=(0, 5))
 
             entry_username = tk.Entry(frame2)
             entry_username.pack(pady=(0, 10))
 
-            label_password = tk.Label(frame2, text="Password", font=("Helvetica", 11))
+            label_password = tk.Label(frame2, text="Password", 
+                                      font=("Helvetica", 11))
             label_password.pack(pady=(0, 5))
 
             entry_password = tk.Entry(frame2, show="*")
             entry_password.pack(pady=(0, 20))
 
-            login_button = tk.Button(frame2, text="Next", font=("Helvetica", 11))
+            login_button = tk.Button(frame2, text="Next", 
+                                     font=("Helvetica", 11))
             login_button.pack()
+
+        
 
     def login(self):
         if self.signup_window:
@@ -139,26 +167,30 @@ class FirstWindow:
             frame = tk.Frame(self.login_window)
             frame.pack(expand=True)
 
-            signupbtn = tk.Button(self.login_window, text="Sign Up", font=("Helvetica", 11),
-                                  command=self.signup)
+            signupbtn = tk.Button(self.login_window, text="Sign Up", 
+                                  font=("Helvetica", 11), command=self.signup)
             signupbtn.place(x=225, y=10)
 
-            title = tk.Label(self.login_window, text="LOGIN", font=("Helvetica", 12))
+            title = tk.Label(self.login_window, text="LOGIN", 
+                             font=("Helvetica", 12))
             title.place(x=130, y=15)
 
-            label_username = tk.Label(frame, text="Username", font=("Helvetica", 11))
+            label_username = tk.Label(frame, text="Username", 
+                                      font=("Helvetica", 11))
             label_username.pack(pady=(0, 5))
 
             entry_username = tk.Entry(frame)
             entry_username.pack(pady=(0, 10))
 
-            label_password = tk.Label(frame, text="Password", font=("Helvetica", 11))
+            label_password = tk.Label(frame, text="Password", 
+                                      font=("Helvetica", 11))
             label_password.pack(pady=(0, 5))
 
             entry_password = tk.Entry(frame, show="*")
             entry_password.pack(pady=(0, 20))
 
-            login_button = tk.Button(frame, text="Next", font=("Helvetica", 11))
+            login_button = tk.Button(frame, text="Next", 
+                                     font=("Helvetica", 11))
             login_button.pack()
 
 if __name__ == "__main__":
