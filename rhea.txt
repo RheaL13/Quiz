@@ -1,4 +1,0 @@
-First Name: rhea
-Birthdate: 16
-Username: rhea
-Password: rhea
