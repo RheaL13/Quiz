@@ -1,4 +1,0 @@
-First Name: rhea
-Birthdate: 01/02/2000
-Username: niki
-Password: NOKI

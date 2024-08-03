@@ -1,4 +1,0 @@
-First Name: nikita
-Birthdate: 01/05/2000
-Username: nikita
-Password: nikita

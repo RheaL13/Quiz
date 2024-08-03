@@ -1,4 +1,0 @@
-First Name: NIKI
-Birthdate: 13/01/2002
-Username: niki1
-Password: niki

@@ -1,0 +1,40 @@
+First Name: r
+Birthdate: 13/10/2000
+Username: r
+Password: r
+
+Quiz scores: 
+Date: 26-07-2024 22:02:19
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 26-07-2024 22:03:52
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 30-07-2024 10:53:43
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 31-07-2024 14:50:38
+Correct: 7
+Wrong: 8
+Score: 46%
+
+Quiz scores: 
+Date: 31-07-2024 14:51:21
+Correct: 6
+Wrong: 9
+Score: 40%
+
+Quiz scores: 
+Date: 02/08/2024 09:42:22
+Correct: 3
+Wrong: 12
+Score: 20%
