@@ -990,6 +990,7 @@ constant demand for new products fuels over-consumption, driven by the desire fo
 trends, and other consumer goods.
 
 Historical Context of Over-Consumption
+
 The Industrial Revolution
 The roots of over-consumption trace back to the Industrial Revolution, which began in the late 18th century. This 
 period marked a significant shift from manual labor to industrialized production, leading to mass production and 
@@ -1002,6 +1003,7 @@ at unprecedented rates. The focus on economic expansion often overlooked environ
 precedent for future consumption patterns.
 
 The Current State of Over-Consumption
+
 Affluent Lifestyles and Global Disparities
 Today, over-consumption is a global challenge, predominantly driven by affluent lifestyles in developed countries. 
 The consumption of natural resources varies widely across the globe, with wealthier nations consuming far more 
@@ -1018,10 +1020,12 @@ Environmental Pollution: Over-consumption leads to increased waste production, m
 oceans. For example, plastic pollution has become a critical issue, contributing to the destruction of marine life and 
 ecosystems.
 
-Resource Depletion: The extraction and use of natural resources at unsustainable rates result in the depletion of vital 
+Resource Depletion: 
+The extraction and use of natural resources at unsustainable rates result in the depletion of vital 
 resources such as water, minerals, and fossil fuels. This creates a strain on the environment and future generations.
 
-Climate Change: The production and disposal of consumer goods are significant contributors to greenhouse gas 
+Climate Change: 
+The production and disposal of consumer goods are significant contributors to greenhouse gas 
 emissions, driving climate change. The carbon footprint of high-consumption lifestyles, particularly in wealthier 
 countries, exacerbates global warming.
 
@@ -1031,6 +1035,7 @@ practices such as using renewable resources, reducing waste, and promoting circu
 for mitigating the impacts of over-consumption.
 
 Addressing Over-Consumption
+
 Innovative Solutions
 Looking ahead, addressing over-consumption demands a fundamental shift in how economies operate and how 
 individuals perceive wealth and consumption. Relying solely on technological solutions is insufficient; systemic 
@@ -1041,28 +1046,44 @@ Future strategies include implementing policies that promote sustainable consump
 of green technologies, and fostering a culture of conservation and mindfulness.
 
 Success Stories in Combating Over-Consumption
-   Tamil Nadu, India: Tamil Nadu has shown that increasing literacy and workforce participation can correlate with 
-   reduced carbon emissions. By focusing on education and sustainable economic practices, the state has made 
-   strides in mitigating the impact of urbanization on the environment.
 
-   Malaysia and the Philippines: These countries have implemented “ship-back” initiatives to return waste to the 
-   originating countries in the Global North. This move has forced international measures for better waste management 
-   and reinforced the importance of global environmental justice.
+Tamil Nadu, India:
+Tamil Nadu has shown that increasing literacy and workforce participation can correlate with 
+reduced carbon emissions. By focusing on education and sustainable economic practices, the state has made 
+strides in mitigating the impact of urbanization on the environment.
 
-   UNICEF’s Efforts: UNICEF has been actively working to improve children’s environments worldwide. Their reports 
-   highlight the need for better environmental policies that are child-sensitive, reducing pollutants, and ensuring 
-   high-quality housing and neighborhoods. This effort also focuses on protecting the most vulnerable children 
-   from environmental harms.
+Malaysia and the Philippines: 
+These countries have implemented “ship-back” initiatives to return waste to the 
+originating countries in the Global North. This move has forced international measures for better waste management 
+and reinforced the importance of global environmental justice.
+
+UNICEF’s Efforts: 
+UNICEF has been actively working to improve children’s environments worldwide. Their reports 
+highlight the need for better environmental policies that are child-sensitive, reducing pollutants, and ensuring 
+high-quality housing and neighborhoods. This effort also focuses on protecting the most vulnerable children 
+from environmental harms.
 
 Conclusion
 Understanding the historical context, current state, and future strategies for addressing over-consumption helps us 
 appreciate the urgency of adopting sustainable practices. By learning from past mistakes and current successes, we 
 can work towards a more sustainable and equitable future.
-    """
+"""
 
         # Add the information content to the frame
         text_widget = tk.Text(frame, wrap=tk.WORD, font=("Helvetica", 14), bg="oldlace", bd=0, fg="black", width=100, height=33)
-        text_widget.insert(tk.END, content)
+        
+        # Split content into paragraphs and add to text_widget with formatting
+        paragraphs = content.strip().split('\n\n')
+        for paragraph in paragraphs:
+            lines = paragraph.strip().split('\n')
+            if lines:
+                first_line = lines[0]
+                remaining_lines = '\n'.join(lines[1:])
+                text_widget.insert(tk.END, first_line + '\n', 'first_line')
+                if remaining_lines:
+                    text_widget.insert(tk.END, remaining_lines + '\n\n')
+        
+        text_widget.tag_configure('first_line', font=("Helvetica", 18, "bold"))
         text_widget.config(state=tk.DISABLED)
         text_widget.pack(expand=True, fill=tk.BOTH)
 
@@ -1075,8 +1096,9 @@ can work towards a more sustainable and equitable future.
         self.main_frame.config(padx=20, pady=20)
 
         # Add the Photos button
-        photos_button = tk.Button(self.main_frame, text="MORE INFORMATION", font = ("Helvetica", 13, "bold"), command=self.open_photos_window)
+        photos_button = tk.Button(self.main_frame, text="MORE INFORMATION", font=("Helvetica", 13, "bold"), command=self.open_photos_window)
         photos_button.place(x=260, y=625)
+
 
     def open_photos_window(self):
         self.photos_window = tk.Toplevel(self.master)
