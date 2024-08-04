@@ -1,0 +1,4 @@
+([('quiz-rhea',
+   '/Users/rhealal/Library/CloudStorage/GoogleDrive-lalr@stu.otc.school.nz/My '
+   'Drive/Yr 12/Digital Science/Main program files/Quiz/dist/quiz-rhea',
+   'EXECUTABLE')],)

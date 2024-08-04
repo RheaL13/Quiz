@@ -918,7 +918,7 @@ class DashboardWindow:
         resize_image = manual_image.resize((730, 600))
         self.manual_img = ImageTk.PhotoImage(resize_image)
 
-        manual_image_label = tk.Label(self.main_frame, image=self.manual_img)
+        manual_image_label = tk.Label(self.main_frame, image=self.manual_img, borderwidth=0, highlightthickness=0)
         manual_image_label.image = self.manual_img  
         manual_image_label.place(y=80, x=5)
 
@@ -947,7 +947,7 @@ class DashboardWindow:
 
         image_label = tk.Label(self.main_frame, image=img)
         image_label.image = img  # Keep reference to the image to prevent garbage collection
-        image_label.place(y=230, x=0)
+        image_label.place(y=200, x=0)
 
         # Quiz button
         quiz_button = tk.Button(self.main_frame, text='QUIZ', width=10,  # Adjusted placement to be within main_frame
@@ -1205,6 +1205,10 @@ can work towards a more sustainable and equitable future.
                             font=("Helvetica", 40), fg="black", bg="oldlace")
         title_label.place(x=0, y=5)
 
+        info_label = tk.Label(self.main_frame, text="Some alternatives to common unsustainable products.", 
+                            font=("Helvetica", 20), fg="green", bg="oldlace")
+        info_label.place(x=135, y=60)
+
         columns = ('PRODUCTS', 'ALTERNATIVES')
         tree = ttk.Treeview(self.main_frame, columns=columns, show='headings')
         tree.heading('PRODUCTS', text='PRODUCTS')
@@ -1375,6 +1379,10 @@ can work towards a more sustainable and equitable future.
             title_label = tk.Label(profile_frame, text="Profile Information", font=("Helvetica", 24, "bold"), bg="oldlace", fg="black")
             title_label.grid(row=0, column=0, columnspan=2, pady=(5, 20))
 
+            info_label = tk.Label(self.main_frame, text="Your profile details and all your quiz results.", 
+                            font=("Helvetica", 20), fg="green", bg="oldlace")
+            info_label.place(x=160, y=10)
+
             labels = ["First Name:", "Username:", "Date of Birth:", "Password:"]
             values = [self.user_info['first_name'], self.user_info['username'], self.user_info['date_of_birth'], self.user_info['password']]
 
@@ -1399,20 +1407,23 @@ can work towards a more sustainable and equitable future.
         file_path = f"{self.user_info['username']}.txt"
         if os.path.exists(file_path):
             with open(file_path, 'r') as file:
-                lines = file.readlines()[5:]  # Skip the first 5 lines
-                content = ''.join(lines)
-                text_widget.insert(tk.END, content)
-                text_widget.tag_configure('bold', font=("Helvetica", 14, "bold"))
+                lines = file.readlines()
+                if len(lines) > 5:
+                    content = ''.join(lines[5:])  # Skip the first 5 lines
+                    text_widget.insert(tk.END, content)
+                    text_widget.tag_configure('bold', font=("Helvetica", 14, "bold"))
 
-                # Apply the bold tag to "Quiz scores:"
-                start_idx = 1.0
-                while True:
-                    start_idx = text_widget.search("Quiz scores:", start_idx, tk.END)
-                    if not start_idx:
-                        break
-                    end_idx = f"{start_idx}+{len('Quiz scores:')}c"
-                    text_widget.tag_add('bold', start_idx, end_idx)
-                    start_idx = end_idx
+                    # Apply the bold tag to "Quiz scores:"
+                    start_idx = 1.0
+                    while True:
+                        start_idx = text_widget.search("Quiz scores:", start_idx, tk.END)
+                        if not start_idx:
+                            break
+                        end_idx = f"{start_idx}+{len('Quiz scores:')}c"
+                        text_widget.tag_add('bold', start_idx, end_idx)
+                        start_idx = end_idx
+                else:
+                    text_widget.insert(tk.END, "You have not completed any quizzes.")
         else:
             no_file_label = tk.Label(self.main_frame, text="File not found", font=("Helvetica", 16), fg="black", bg="oldlace")
             no_file_label.place(x=250, y=250)  # Position the label at x=250, y=250
@@ -1423,6 +1434,7 @@ can work towards a more sustainable and equitable future.
         scrollbar1 = ttk.Scrollbar(self.main_frame, orient=tk.VERTICAL, command=text_widget.yview)
         scrollbar1.place(x=615, y=320, height=280)
         text_widget.configure(yscrollcommand=scrollbar1.set)
+
 
     def step1_open_quiz_window(self):
         popup_q1 = tk.Toplevel()
