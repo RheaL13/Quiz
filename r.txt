@@ -38,3 +38,33 @@ Date: 02/08/2024 09:42:22
 Correct: 3
 Wrong: 12
 Score: 20%
+
+Quiz scores: 
+Date: 07/08/2024 14:37:32
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 07/08/2024 14:40:41
+Correct: 2
+Wrong: 13
+Score: 13%
+
+Quiz scores: 
+Date: 07/08/2024 14:48:19
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 18/08/2024 10:48:41
+Correct: 5
+Wrong: 10
+Score: 33%
+
+Quiz scores: 
+Date: 18/08/2024 15:53:50
+Correct: 3
+Wrong: 12
+Score: 20%
