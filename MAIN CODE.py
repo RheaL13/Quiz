@@ -19,7 +19,7 @@ from PIL import ImageTk
 data={
     "question": [
         "What does over-consumption mean?",
-        "Who do you think is the biggest consumer group for material stuff?",
+        "Who do you think is the biggest consumer group for material goods?",
         "How many kgs of waste ends up in our landfill every year?",
         "How many kgs does each household contribute?",
         "What percent of the waste ends up getting recycled?",
@@ -27,8 +27,8 @@ data={
         "of the United States of America, we would need about ___ earths.",
         "What are some ways to consume sustainability?",
         "By 2100, if we do nothing, the temperature of the Earth's surface is"
-        " projected to increase by how much?",
-        "How much e-waste is generated globally each year?",
+        " projected to increase by how many degrees celcius?",
+        "How many kilograms of e-waste is generated globally each year?",
         "Which material is the most commonly overconsumed and leads to "
         "significant environmental pollution?",
         "How does overconsumption contribute to climate change?",
@@ -135,6 +135,7 @@ data={
     ]
 }
 
+
 # The Main Window (the first one users will see)
 class MainWindow:
     '''Main window code.'''
@@ -146,25 +147,25 @@ class MainWindow:
         self.master.resizable(False, False)
 
         # Calculate center position
-        window_width=1200
-        window_height=750
+        w_w=1200
+        w_h=750
         screen_width=self.master.winfo_screenwidth()
         screen_height=self.master.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_position=(screen_width-w_w)//2
+        y_position=(screen_height-w_h)//4
 
         # Set window geometry
-        self.master.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.master.geometry(f"{w_w}x{w_h}+{x_position}+{y_position}")
 
         self.firstwindow=tk.Frame(self.master, bg="oldlace")
         self.firstwindow.pack(fill="both", expand=True)
 
         # Title and headings of the window
         label=tk.Label(self.firstwindow, 
-                         text="EcoSmart\nOverconsumption Quiz", 
-                         font=("Helvetica", 28, "bold"), 
-                         fg="green", bg="oldlace")
+                       text="EcoSmart\nOverconsumption Quiz", 
+                       font=("Helvetica", 28, "bold"), 
+                       fg="green", bg="oldlace")
         label.pack(pady=40)
 
         description=tk.Label(self.firstwindow, text="Welcome!\nThis "+
@@ -177,21 +178,21 @@ class MainWindow:
 
         # Buttons on the window, that do different things
         signup_button=tk.Button(self.firstwindow, text="SIGN UP", width=10, 
-                                  height=2, fg="green", bg="white",
-                                  font=("Helvetica", 10, "bold"),
-                                  command=self.signup)
+                                height=2, fg="green", bg="white",
+                                font=("Helvetica", 10, "bold"),
+                                command=self.signup)
         signup_button.place(x=1090, y=50)
 
         login_button=tk.Button(self.firstwindow, text="LOGIN", width=10, 
-                                 height=2, fg="green", bg="white",
-                                 font=("Helvetica", 10, "bold"),
-                                 command=self.login)
+                               height=2, fg="green", bg="white",
+                               font=("Helvetica", 10, "bold"),
+                               command=self.login)
         login_button.place(x=985, y=50)
 
         exit_button=tk.Button(self.firstwindow, text='EXIT', width=10, 
-                                height=2, fg="black", bg="white", 
-                                font=("Helvetica", 10, "bold"),
-                                command=self.check_exit)
+                              height=2, fg="black", bg="white", 
+                              font=("Helvetica", 10, "bold"),
+                              command=self.check_exit)
         exit_button.place(x=1090, y=685)
 
         # Code to add a picture to the window
@@ -233,7 +234,7 @@ class MainWindow:
     def check_exit(self):
         '''Ask if they want to exit (verify).'''
         result=mb.askquestion("Exit", "Are you sure you want to exit"+
-                                " the program now?")
+                              " the program now?")
         if result=="yes":
             self.master.destroy()
 
@@ -277,63 +278,63 @@ class SignUpWindow:
         self.signup_window.resizable(False, False)
 
         # Calculate center position
-        window_width=600
-        window_height=550
+        w_w=600  # Window width
+        w_h=550  # Window height
         screen_width=self.signup_window.winfo_screenwidth()
         screen_height=self.signup_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.signup_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.signup_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         # Headings for the different entries
         title=tk.Label(self.signup_window, text="Sign Up", 
-                         font=("Helvetica", 20, "bold"), 
-                         fg="black", bg="oldlace")
+                       font=("Helvetica", 20, "bold"), 
+                       fg="black", bg="oldlace")
         title.pack(pady=20)
 
         title1=tk.Label(self.signup_window, text="First Name", 
-                          font=("Helvetica", 13, "bold"), 
-                          fg="black", bg="oldlace")
+                        font=("Helvetica", 13, "bold"), 
+                        fg="black", bg="oldlace")
         title1.pack(pady=2)
 
         self.first_name=self.create_entry("First Name")
 
         title2=tk.Label(self.signup_window, text="Username", 
-                          font=("Helvetica", 13, "bold"), 
-                          fg="black", bg="oldlace")
+                        font=("Helvetica", 13, "bold"), 
+                        fg="black", bg="oldlace")
         title2.pack(pady=2)
 
         self.username=self.create_entry("Username")
 
         title3=tk.Label(self.signup_window, text="Password", 
-                          font=("Helvetica", 13, "bold"), 
-                          fg="black", bg="oldlace")
+                        font=("Helvetica", 13, "bold"), 
+                        fg="black", bg="oldlace")
         title3.pack(pady=2)
 
         self.password=self.create_entry("Password", show="*")
 
         title4=tk.Label(self.signup_window, text="Confirm Password", 
-                          font=("Helvetica", 13, "bold"), fg="black", 
-                          bg="oldlace")
+                        font=("Helvetica", 13, "bold"), fg="black", 
+                        bg="oldlace")
         title4.pack(pady=2)
 
         self.confirm_password=self.create_entry("Password", show="*")
 
         title5=tk.Label(self.signup_window, 
-                          text="Date of Birth (DD/MM/YYYY)", 
-                          font=("Helvetica", 13, "bold"), fg="black", 
-                          bg="oldlace")
+                        text="Date of Birth (DD/MM/YYYY)", 
+                        font=("Helvetica", 13, "bold"), fg="black", 
+                        bg="oldlace")
         title5.pack(pady=2)
 
         self.date_of_birth=self.create_entry("(DD/MM/YYYY)")
 
         next_button=tk.Button(self.signup_window, text="NEXT", width=7,
-                                font=("Helvetica", 15, "bold"), 
-                                height=1, fg="green", bg="white", 
-                                command=self.signup)
+                              font=("Helvetica", 15, "bold"), 
+                              height=1, fg="green", bg="white", 
+                              command=self.signup)
         next_button.pack(pady=20)
 
         # Button that changes between the sign up and login windows
@@ -343,21 +344,21 @@ class SignUpWindow:
             self.signup_window.destroy()
 
         login_change_button=tk.Button(self.signup_window, text="LOGIN", 
-                                        font=("Helvetica", 15, "bold"),
-                                        width=7, height=1, fg="green", 
-                                        bg="white", command=change2)
+                                      font=("Helvetica", 15, "bold"),
+                                      width=7, height=1, fg="green", 
+                                      bg="white", command=change2)
         login_change_button.place(x=480, y=20)
 
         back_button=tk.Button(self.signup_window, text="EXIT", width=7,
-                                font=("Helvetica", 15, "bold"),
-                                height=1, fg="black", bg="white", 
-                                command=self.signup_window.destroy)
+                              font=("Helvetica", 15, "bold"),
+                              height=1, fg="black", bg="white", 
+                              command=self.signup_window.destroy)
         back_button.place(x=480, y=485)
 
     def create_entry(self, placeholder, show=None):
         '''Display what the entry is for.'''
         entry=tk.Entry(self.signup_window, show=show, 
-                         font=("Helvetica", 12))
+                       font=("Helvetica", 12))
         entry.pack(pady=10)
         entry.insert(0, placeholder)
         entry.bind("<FocusIn>", lambda event, e=entry, 
@@ -428,20 +429,22 @@ class SignUpWindow:
 
         birthdate=self.validate_date_of_birth(date_of_birth)
         if not birthdate:
-            mb.showerror("Invalid Birthdate", "Please enter a valid "+
-                         "birthdate.", parent=self.signup_window)
+            mb.showerror("Invalid Date Of Birth", "Please enter a valid "+
+                         "date of birth. Remember to include the ' / '.", 
+                         parent=self.signup_window)
             return False
 
         age=(datetime.today()-birthdate).days//365
         if age<0 or age>90:
-            mb.showerror("Invalid Birthdate", "Invalid birthdate.", 
+            mb.showerror("Invalid Date Of Birth", "Invalid date of birth. "+
+                         "Remember to include the ' / '.", 
                          parent=self.signup_window)
             return False
         elif age<18 or age>30:
             if age<10:
                 age_maybe=mb.askquestion("Age Notice", "Are you sure"+
-                                           "that is the correct age?", 
-                                           parent=self.signup_window)
+                                         "that is the correct age?", 
+                                         parent=self.signup_window)
                 if age_maybe=="no":
                     return False
             else:
@@ -508,41 +511,41 @@ class LoginWindow:
         self.login_window.resizable(False, False)
 
         # Calculate center position
-        window_width=600
-        window_height=320
+        w_w=600  # Window width
+        w_h=320  # window height
         screen_width=self.login_window.winfo_screenwidth()
         screen_height=self.login_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.login_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.login_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         # Headings for the different entries
         title=tk.Label(self.login_window, text="Login", 
-                         font=("Helvetica", 20, "bold"), 
-                         fg="black", bg="oldlace")
+                       font=("Helvetica", 20, "bold"), 
+                       fg="black", bg="oldlace")
         title.pack(pady=20)
 
         title1=tk.Label(self.login_window, text="Username", 
-                          font=("Helvetica", 13, "bold"), 
-                          fg="black", bg="oldlace")
+                        font=("Helvetica", 13, "bold"), 
+                        fg="black", bg="oldlace")
         title1.pack(pady=2)
 
         self.username=self.create_entry("Username")
 
         title2=tk.Label(self.login_window, text="Password", 
-                          font=("Helvetica", 13, "bold"), 
-                          fg="black", bg="oldlace")
+                        font=("Helvetica", 13, "bold"), 
+                        fg="black", bg="oldlace")
         title2.pack(pady=2)
         
         self.password=self.create_entry("Password", show="*")
 
         next_button=tk.Button(self.login_window, text="NEXT", width=7, 
-                                height=1, fg="green", bg="white", 
-                                font=("Helvetica", 15, "bold"),
-                                command=self.login)
+                              height=1, fg="green", bg="white", 
+                              font=("Helvetica", 15, "bold"),
+                              command=self.login)
         next_button.pack(pady=20)
 
         # Button that changes between the sign up and login windows
@@ -554,15 +557,15 @@ class LoginWindow:
             self.login_window.destroy()
 
         signup_change_button=tk.Button(self.login_window, text="SIGN UP", 
-                                         font=("Helvetica", 15, "bold"), 
-                                         width=7, height=1, fg="green", 
-                                         bg="white", command=change)
+                                       font=("Helvetica", 15, "bold"), 
+                                       width=7, height=1, fg="green", 
+                                       bg="white", command=change)
         signup_change_button.place(x=480, y=20)
 
         back_button=tk.Button(self.login_window, text="EXIT", 
-                                font=("Helvetica", 15, "bold"), width=7, 
-                                height=1, fg="black", bg="white", 
-                                command=self.login_window.destroy)
+                              font=("Helvetica", 15, "bold"), width=7, 
+                              height=1, fg="black", bg="white", 
+                              command=self.login_window.destroy)
         back_button.place(x=480, y=260)
 
     def create_entry(self, placeholder, show=None):
@@ -658,10 +661,10 @@ class RandomQuiz:
                         background='green')
         self.progress_var=tk.DoubleVar()
         self.progress_bar=ttk.Progressbar(self.root, maximum=100, 
-                                            length=300, 
-                                            variable=self.progress_var, 
-                                            style="green.Horizontal."+                 # see if this is correct
-                                            "TProgressbar")
+                                          length=300, 
+                                          variable=self.progress_var, 
+                                          style="green.Horizontal."+    
+                                          "TProgressbar")
         self.progress_bar.place(x=50, y=95)
         self.update_progress_bar()
 
@@ -675,20 +678,21 @@ class RandomQuiz:
 
     def next_btn(self):
         '''Tell the user that they need to click an option (answer).'''
-        if self.opt_selected.get()==0:
-            mb.showwarning("Warning", "Please select an option before "+
-                           "proceeding.", parent=self.root)
+        if self.opt_selected.get() == 0:
+            mb.showwarning("Warning", "Please select an option before"+
+                           " proceeding.", parent=self.root)
             return
         
         if self.check_ans(self.q_no):
-            self.correct+=1
-        self.q_no+=1
-        self.update_progress_bar()
-        if self.q_no==self.data_size:
-            self.update_progress_bar(final=True)  # Set progress bar to 100%
-            self.display_result()
-            self.root.destroy()
+            self.correct += 1
+        
+        self.q_no += 1
+
+        if self.q_no == self.data_size:
+            self.update_progress_bar(final=True)  # Progress bar to 100%
+            self.root.after(100, self.display_result) 
         else:
+            self.update_progress_bar()
             self.display_question()
             self.display_options()
 
@@ -720,6 +724,8 @@ class RandomQuiz:
         mb.showinfo("Learn More", "To do better next time, go to the 'LEARN'"+
                     " tab to learn more about over-consumption.", 
                     parent=self.root)
+        
+        self.root.destroy()
 
     def check_ans(self, q_no):
         '''Checking the answers of the options the user clicked.'''
@@ -728,13 +734,13 @@ class RandomQuiz:
     def buttons(self):
         '''Important buttons for the quiz.'''
         next_button=tk.Button(self.root, text="NEXT", command=self.next_btn,
-                                bg="white", fg="black", width=7, height=1, 
-                                font=("Helvetica", 16, "bold"))
+                              bg="white", fg="black", width=7, height=1, 
+                              font=("Helvetica", 16, "bold"))
         next_button.place(x=470, y=550)
         quit_button=tk.Button(self.root, text="EXIT", 
-                                bg="white", width=7, height=1,
-                                fg="black", command=self.check_exit,
-                                font=("Helvetica", 16, "bold"))
+                              bg="white", width=7, height=1,
+                              fg="black", command=self.check_exit,
+                              font=("Helvetica", 16, "bold"))
         quit_button.place(x=920, y=95)
 
     def check_exit(self):
@@ -742,8 +748,8 @@ class RandomQuiz:
         not be saved.
         '''
         result=mb.askquestion("Exit", "Are you sure you want to exit the "+
-                                "quiz now? Your progress won't be saved.", 
-                                parent=self.root)
+                              "quiz now? Your progress won't be saved.", 
+                              parent=self.root)
         if result=="yes":
             self.root.destroy()
 
@@ -761,16 +767,16 @@ class RandomQuiz:
         if hasattr(self, 'q_label'):
             self.q_label.destroy()  # Destroy previous question label
         self.q_label=tk.Label(self.root, text=self.questions[self.q_no], 
-                                width=100, font=('Helvetica', 20, 'bold'), 
-                                anchor='w', wraplength=900, justify='left', 
-                                bg="oldlace", fg="black")
+                              width=100, font=('Helvetica', 20, 'bold'), 
+                              anchor='w', wraplength=900, justify='left', 
+                              bg="oldlace", fg="black")
         self.q_label.place(x=50, y=150)
 
     def display_title(self):
         '''Title of the quiz.'''
         title=tk.Label(self.root, text="OVERCONSUMPTION QUIZ",
-                         width=50, height=2, bg="green", fg="white", 
-                         font=("Helvetica", 26, "bold"))
+                       width=50, height=2, bg="green", fg="white", 
+                       font=("Helvetica", 26, "bold"))
         title.place(x=0, y=0)
 
     def radio_buttons(self):
@@ -779,21 +785,21 @@ class RandomQuiz:
         y_pos=250
         while len(q_list)<4:
             radio_btn=tk.Radiobutton(self.root, text=" ", 
-                                       variable=self.opt_selected,
-                                       value=len(q_list)+1, 
-                                       font=("Helvetica", 18), fg="black", 
-                                       bg="oldlace")
+                                     variable=self.opt_selected,
+                                     value=len(q_list)+1, 
+                                     font=("Helvetica", 18), fg="black", 
+                                     bg="oldlace")
             q_list.append(radio_btn)
             radio_btn.place(x=100, y=y_pos)
             y_pos+=60
         return q_list
 
     def update_progress_bar(self, final=False):
-        '''Updating the progress bar when moved onto next question.'''
-        if final:
+        '''Updating the progress bar when moving onto the next question.'''
+        if final or self.q_no >= self.data_size:
             self.progress_var.set(100)
         else:
-            self.progress_var.set((self.q_no/self.data_size)*100)
+            self.progress_var.set((self.q_no/self.data_size) * 100)
 
 
 # Code for the normal ordered quiz
@@ -823,31 +829,29 @@ class Quiz:
                         background='green')
         self.progress_var=tk.DoubleVar()
         self.progress_bar=ttk.Progressbar(self.root, maximum=100, length=300, 
-                                            variable=self.progress_var, 
-                                            style="green.Horizontal."+
-                                            "TProgressbar")
+                                          variable=self.progress_var, 
+                                          style="green.Horizontal."+
+                                          "TProgressbar")
         self.progress_bar.place(x=50, y=95)
         self.update_progress_bar()
 
     def next_btn(self):
         '''Tell the user that they need to click an option (answer).'''
-        if self.opt_selected.get()==0:
-            mb.showwarning("Warning", "Please select an option before "+
-                           "proceeding.", parent=self.root)
+        if self.opt_selected.get() == 0:
+            mb.showwarning("Warning", "Please select an option "+
+                           "before proceeding.", parent=self.root)
             return
         
         if self.check_ans(self.q_no):
-            self.correct+=1
-        self.q_no+=1
-        self.update_progress_bar()
-        if self.q_no==self.data_size:
-            self.update_progress_bar(final=True)  # Set progress bar to 100%
-            self.display_result()
-            self.root.destroy()
+            self.correct += 1
+        
+        self.q_no += 1
+
+        if self.q_no == self.data_size:
+            self.update_progress_bar(final=True)  # Progress bar to 100%
+            self.root.after(100, self.display_result)  
         else:
-            for opt in self.opts:  # Clear previous options
-                opt.destroy()
-            self.opts=self.radio_buttons()  # radio buttons for new options
+            self.update_progress_bar()
             self.display_question()
             self.display_options()
     
@@ -879,6 +883,7 @@ class Quiz:
         mb.showinfo("Learn More", "To do better next time, go to the 'LEARN'"+
                     " tab to learn more about over-consumption.", 
                     parent=self.root)
+        self.root.destroy()
 
     def check_ans(self, q_no):
         '''Checking the answers of the options the user clicked.'''
@@ -887,13 +892,13 @@ class Quiz:
     def buttons(self):
         '''Important buttons for the quiz.'''
         next_button=tk.Button(self.root, text="NEXT", command=self.next_btn,
-                                bg="white", fg="black", width=7, height=1, 
-                                font=("Helvetica", 16, "bold"))
+                              bg="white", fg="black", width=7, height=1, 
+                              font=("Helvetica", 16, "bold"))
         next_button.place(x=470, y=550)
         quit_button=tk.Button(self.root, text="EXIT", 
-                                bg="white", width=7, height=1,
-                                fg="black", command=self.check_exit,
-                                font=("Helvetica", 16, "bold"))
+                              bg="white", width=7, height=1,
+                              fg="black", command=self.check_exit,
+                              font=("Helvetica", 16, "bold"))
         quit_button.place(x=920, y=95)
 
     def check_exit(self):
@@ -901,7 +906,7 @@ class Quiz:
         not be saved.
         '''
         result=mb.askquestion("Exit", "Are you sure you want to exit the"+
-                                " quiz now?", parent=self.root)
+                              " quiz now?", parent=self.root)
         if result=="yes":
             self.root.destroy()
 
@@ -937,22 +942,22 @@ class Quiz:
         y_pos=250
         while len(q_list)<4:
             radio_btn=tk.Radiobutton(self.root, text=" ", 
-                                    variable=self.opt_selected,
-                                    value=len(q_list)+1, 
-                                    font=("Helvetica", 18),
+                                     variable=self.opt_selected,
+                                     value=len(q_list)+1, 
+                                     font=("Helvetica", 18),
                                     fg="black", 
-                                    bg="oldlace")
+                                     bg="oldlace")
             q_list.append(radio_btn)
             radio_btn.place(x=100, y=y_pos)
             y_pos+=60
         return q_list
 
     def update_progress_bar(self, final=False):
-        '''Updating the progress bar when moved onto next question.'''
-        if final:
+        '''Updating the progress bar when moving onto the next question.'''
+        if final or self.q_no >= self.data_size:
             self.progress_var.set(100)
         else:
-            self.progress_var.set((self.q_no/self.data_size)*100)
+            self.progress_var.set((self.q_no/self.data_size) * 100)
 
 
 # Code for the main dashboard window (after the user has logged in)
@@ -968,20 +973,20 @@ class DashboardWindow:
         self.dashboard_window.resizable(False, False)
 
         # Calculate center position
-        window_width=1200
-        window_height=750
+        w_w=1200  # Window width
+        w_h=750  # window height
         screen_width=self.dashboard_window.winfo_screenwidth()
         screen_height=self.dashboard_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.dashboard_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.dashboard_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         title=tk.Label(self.dashboard_window, text="EcoSmart", 
-                         font=("Helvetica", 20, "bold"), fg="green", 
-                         bg="oldlace")
+                       font=("Helvetica", 20, "bold"), fg="green", 
+                       bg="oldlace")
         title.pack(pady=20)
 
         # Sidebar and main area
@@ -989,21 +994,21 @@ class DashboardWindow:
         self.create_main_area()
 
         exit_button=tk.Button(self.dashboard_window, text='EXIT', 
-                                font=("Helvetica", 10, "bold"), width=10, 
-                                height=2, fg="black", bg="white", 
-                                command=self.check_exit)
+                              font=("Helvetica", 10, "bold"), width=10, 
+                              height=2, fg="black", bg="white", 
+                              command=self.check_exit)
         exit_button.place(x=1090, y=685)
 
         signout_button=tk.Button(self.dashboard_window, text='SIGN OUT', 
-                                   font=("Helvetica", 10, "bold"), width=10, 
-                                   height=2, fg="black", bg="white", 
-                                   command=self.signout)
+                                 font=("Helvetica", 10, "bold"), width=10, 
+                                 height=2, fg="black", bg="white", 
+                                 command=self.signout)
         signout_button.place(x=1090, y=620)
 
         profile_button=tk.Button(self.dashboard_window, text='PROFILE', 
-                                   font=("Helvetica", 10, "bold"), width=10, 
-                                   height=2, fg="green", bg="white", 
-                                   command=self.display_profile)
+                                 font=("Helvetica", 10, "bold"), width=10, 
+                                 height=2, fg="green", bg="white", 
+                                 command=self.display_profile)
         profile_button.place(x=1090, y=50)
 
         self.display_home()
@@ -1011,15 +1016,15 @@ class DashboardWindow:
     def check_exit(self):
         '''Verify if the user wants to exit.'''
         result=mb.askquestion("Exit", "Are you sure you want to exit the "+
-                                "program now?", parent=self.dashboard_window)
+                              "program now?", parent=self.dashboard_window)
         if result=="yes":
             self.master.destroy()
 
     def signout(self):
         '''Verify if the user wants to sign out.'''
         result=mb.askquestion("Sign Out", "Are you sure you want to sign "+
-                                "out of the program now?", 
-                                parent=self.dashboard_window)
+                              "out of the program now?", 
+                              parent=self.dashboard_window)
         if result=="yes":
             self.dashboard_window.destroy()
 
@@ -1039,8 +1044,8 @@ class DashboardWindow:
 
         for i, (text, command) in enumerate(buttons):
             btn=tk.Button(self.dashboard_window, text=text, width=11, 
-                            height=2, font=("Helvetica", 10, "bold"), 
-                            fg="green", bg="white", command=command)
+                          height=2, font=("Helvetica", 10, "bold"), 
+                          fg="green", bg="white", command=command)
             btn.place(x=50, y=50+i*100)
 
     # The area that will be cleared to create the tab look. Where it 
@@ -1065,17 +1070,17 @@ class DashboardWindow:
 
         # Title label
         title_label=tk.Label(self.main_frame, text="Home Page", 
-                               font=("Helvetica", 30), fg="black", 
-                               bg="oldlace")
+                             font=("Helvetica", 30), fg="black", 
+                             bg="oldlace")
         title_label.place(x=240, y=5)
 
         label=tk.Label(self.main_frame, 
-                         text="Welcome to the Home Page\nThis program is to "+
-                         "teach and test you on your knowledge about \nover"+
-                         "-consumption. Click the buttons on the side "+
-                         "to navigate through the program.", 
-                         font=("Helvetica", 14),
-                         fg="green", bg="oldlace")
+                       text="Welcome to the Home Page\nThis program is to "+
+                       "teach and test you on your knowledge about \nover"+
+                       "-consumption. Click the buttons on the side "+
+                       "to navigate through the program.", 
+                       font=("Helvetica", 14),
+                       fg="green", bg="oldlace")
         label.place(x=10, y=60)
 
         # Load and display image
@@ -1118,16 +1123,16 @@ class DashboardWindow:
 
         # Title label
         title_label=tk.Label(self.main_frame, text="Quiz Page", 
-                               font=("Helvetica", 30), fg="black", 
-                               bg="oldlace")
+                             font=("Helvetica", 30), fg="black", 
+                             bg="oldlace")
         title_label.place(x=249, y=5)
 
         label=tk.Label(self.main_frame, text="Welcome to the Quiz Page\nTo"+
-                         " take the quiz, press the quiz button below.\n"+
-                         "And decide if you want to have it randomised or not"+
-                         ".\nThen go onto the Learn tab to teach yourself "+
-                         "more, to do better in the quiz, next time.",
-                         font=("Helvetica", 15), fg="green", bg="oldlace")
+                       " take the quiz, press the quiz button below.\n"+
+                       "And decide if you want to have it randomised or not"+
+                       ".\nThen go onto the Learn tab to teach yourself "+
+                       "more, to do better in the quiz, next time.",
+                       font=("Helvetica", 15), fg="green", bg="oldlace")
         label.place(x=0, y=80)
 
         # Load and display image
@@ -1142,9 +1147,9 @@ class DashboardWindow:
 
         # Quiz button
         quiz_button=tk.Button(self.main_frame, text='QUIZ', width=10, 
-                                height=2, font=("Helvetica", 10, "bold"), 
-                                fg="green", bg="white", 
-                                command=self.step1_open_quiz_window)
+                              height=2, font=("Helvetica", 10, "bold"), 
+                              fg="green", bg="white", 
+                              command=self.step1_open_quiz_window)
         quiz_button.place(x=300, y=635)
 
     # The learning page of the Dashboard Window. There is also a button
@@ -1158,19 +1163,19 @@ class DashboardWindow:
 
         # Title
         title_label=tk.Label(self.main_frame, 
-                               text="Learn About Over-Consumption", 
-                               font=("Helvetica", 30), fg="black", 
-                               bg="oldlace")
+                             text="Learn About Over-Consumption", 
+                             font=("Helvetica", 30), fg="black", 
+                             bg="oldlace")
         title_label.place(x=70, y=5)
 
         # Create a Canvas widget
         canvas=tk.Canvas(self.main_frame, bg="oldlace", width=750, 
-                           height=530)
+                         height=530)
         canvas.place(x=-20, y=70)
 
         # Add a scrollbar to the canvas
         scrollbar=ttk.Scrollbar(self.main_frame, orient=tk.VERTICAL, 
-                                  command=canvas.yview)
+                                command=canvas.yview)
         scrollbar.place(x=733, y=70, height=536)
         canvas.configure(yscrollcommand=scrollbar.set)
 
@@ -1283,8 +1288,8 @@ from past mistakes and current successes, we can work towards a more sustainable
 
         # Add the information content to the frame
         text_widget=tk.Text(frame, wrap=tk.WORD, font=("Helvetica", 12), 
-                              bg="oldlace", bd=0, fg="black", width=100, 
-                              height=33)
+                            bg="oldlace", bd=0, fg="black", width=100, 
+                            height=33)
         
         # Split content into paragraphs and add to text_widget with formatting
         paragraphs=content.strip().split('\n\n')
@@ -1310,8 +1315,8 @@ from past mistakes and current successes, we can work towards a more sustainable
 
         # Add the Photos / Videos button
         photos_button=tk.Button(self.main_frame, text="MORE INFORMATION", 
-                                  bg="white", font=("Helvetica", 13, "bold"), 
-                                  command=self.open_photos_window)
+                                bg="white", font=("Helvetica", 13, "bold"), 
+                                command=self.open_photos_window)
         photos_button.place(x=240, y=625)
 
     # The code for the photos/vidoes page
@@ -1325,16 +1330,16 @@ from past mistakes and current successes, we can work towards a more sustainable
         self.photos_window.resizable(False, False)
 
         # Calculate center position
-        window_width=1000
-        window_height=600
+        w_w=1000  # Window width
+        w_h=600  # window height
         screen_width=self.photos_window.winfo_screenwidth()
         screen_height=self.photos_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.photos_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.photos_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         title=tk.Label(self.photos_window, text="EcoSmart", 
                          font=("Helvetica", 20, "bold"), fg="green", 
@@ -1350,14 +1355,14 @@ from past mistakes and current successes, we can work towards a more sustainable
         
         # Label for video URL input
         video_url_label=tk.Label(self.photos_window, text="Video About Our "+
-                                "Obsession With Economic Growth:", 
-                                font=("Helvetica", 11, 'bold'), fg="green", 
-                                bg="oldlace")
+                                 "Obsession With Economic Growth:", 
+                                 font=("Helvetica", 11, 'bold'), fg="black", 
+                                 bg="oldlace")
         video_url_label.pack(pady=10)
         
         # Button to open the video
-        btn=tk.Button(self.photos_window, text="Play Video 1",
-                     font=("Helvetica", 12, 'bold'), command=open_video1)
+        btn=tk.Button(self.photos_window, text="Play Video 1", fg = "green",
+                      font=("Helvetica", 12, 'bold'), command=open_video1)
         btn.pack(pady=7)
 
         # Video links and buttons
@@ -1369,14 +1374,14 @@ from past mistakes and current successes, we can work towards a more sustainable
         
         # Label for video URL input
         video_url_label=tk.Label(self.photos_window, text="Video About How "+
-                                "Consumerism Ruins Our Planet\nAnd Finances:", 
-                                font=("Helvetica", 11, 'bold'), fg="green", 
-                                bg="oldlace")
+                                 "Consumerism Ruins Our Planet\nAnd Finances:", 
+                                 font=("Helvetica", 11, 'bold'), fg="black", 
+                                 bg="oldlace")
         video_url_label.pack(pady=10)
 
         # Button to open the video
-        btn=tk.Button(self.photos_window, text="Play Video 2",
-                     font=("Helvetica", 12, 'bold'), command=open_video2)
+        btn=tk.Button(self.photos_window, text="Play Video 2", fg = "green",
+                      font=("Helvetica", 12, 'bold'), command=open_video2)
         btn.pack(pady=7)
 
         # Video links and buttons
@@ -1388,14 +1393,14 @@ from past mistakes and current successes, we can work towards a more sustainable
 
         # Label for video URL input
         video_url_label=tk.Label(self.photos_window, text="Video About How "+
-                                "Overconsumption\nThreatens Our Planet:", 
-                                font=("Helvetica", 11, 'bold'), fg="green", 
-                                bg="oldlace")
+                                 "Overconsumption\nThreatens Our Planet:", 
+                                 font=("Helvetica", 11, 'bold'), fg="black", 
+                                 bg="oldlace")
         video_url_label.pack(pady=10)
         
         # Button to open the video
-        btn=tk.Button(self.photos_window, text="Play Video 3",
-                     font=("Helvetica", 12, 'bold'), command=open_video3)
+        btn=tk.Button(self.photos_window, text="Play Video 3", fg = "green",
+                      font=("Helvetica", 12, 'bold'), command=open_video3)
         btn.pack(pady=7)
 
         # Video links and buttons
@@ -1406,21 +1411,22 @@ from past mistakes and current successes, we can work towards a more sustainable
             webbrowser.open(video_url)
         
         # Label for video URL input
-        video_url_label=tk.Label(self.photos_window, text=" Video About Global"+
-                                " Environmental\nImpacts Of Consumption:", 
-                                font=("Helvetica", 11, 'bold'), fg="green", 
-                                bg="oldlace")
+        video_url_label=tk.Label(self.photos_window, text=" Video About "+
+                                  "Global Environmental\nImpacts Of "+
+                                  "Consumption:", 
+                                  font=("Helvetica", 11, 'bold'), fg="black", 
+                                  bg="oldlace")
         video_url_label.pack(pady=10)
         
         # Button to open the video
-        btn=tk.Button(self.photos_window, text="Play Video 4",
-                     font=("Helvetica", 12, 'bold'), command=open_video4)
+        btn=tk.Button(self.photos_window, text="Play Video 4", fg = "green",
+                      font=("Helvetica", 12, 'bold'), command=open_video4)
         btn.pack(pady=7)
 
-        back=tk.Button(self.photos_window, text="EXIT", 
-                      font=("Helvetica", 12, 'bold'), 
-                      command=self.photos_window.destroy)
-        back.pack(pady=20)
+        back=tk.Button(self.photos_window, text="EXIT",  
+                       font=("Helvetica", 13, 'bold'), 
+                       command=self.photos_window.destroy)
+        back.pack(pady=30)
 
         # Load and display image 1
         image_path1="picture4.webp"
@@ -1469,12 +1475,12 @@ from past mistakes and current successes, we can work towards a more sustainable
         self.clear_main_area()
 
         title_label=tk.Label(self.main_frame, text="Budget-Friendly "+
-                               "Alternative Products Page", 
-                            font=("Helvetica", 30), fg="black", bg="oldlace")
+                             "Alternative Products Page", 
+                             font=("Helvetica", 30), fg="black", bg="oldlace")
         title_label.place(x=0, y=5)
 
         info_label=tk.Label(self.main_frame, text="Some alternatives to "+
-                              "common unsustainable products.", 
+                            "common unsustainable products.", 
                             font=("Helvetica", 15), fg="green", bg="oldlace")
         info_label.place(x=105, y=60)
 
@@ -1496,7 +1502,7 @@ from past mistakes and current successes, we can work towards a more sustainable
             ('Plastic Toothbrushes', 'Bamboo toothbrushes'),
             ('Conventional Cotton Pads', 'Reusable makeup remover pads'),
             ('Plastic Wrap', 'Silicone food covers'),
-            ('Disposable Menstrual Products', 'Menstrual cups or reusable cloth pads')
+            ('Disposable Period Products', 'Period cup or reusable cloth pads')
         ]
 
         for product, alternative in products_alternatives:
@@ -1516,24 +1522,24 @@ from past mistakes and current successes, we can work towards a more sustainable
         self.clear_main_area()
 
         label=tk.Label(self.main_frame, text="Welcome to the About Page", 
-                         font=("Helvetica", 16), fg="oldlace", bg="oldlace")
+                       font=("Helvetica", 16), fg="oldlace", bg="oldlace")
         label.pack(pady=20)
 
         # Title label
         title_label=tk.Label(self.main_frame, text="About Page", 
-                               font=("Helvetica", 30), fg="black", 
-                               bg="oldlace")
+                             font=("Helvetica", 30), fg="black", 
+                             bg="oldlace")
         title_label.place(x=235, y=5)
 
         # Create a Text widget to display file contents
         self.configfile=Text(self.main_frame, wrap="word", bd=0, 
-                               bg="oldlace", font=("Helvetica", 13))
+                             bg="oldlace", font=("Helvetica", 13))
         self.configfile.config(state='normal') 
         self.configfile.place(x=0, y=100, width=775, height=250)
 
         # Add a scrollbar to the canvas
         scrollbar=ttk.Scrollbar(self.main_frame, orient=tk.VERTICAL, 
-                                  command=self.configfile.yview)
+                                command=self.configfile.yview)
         scrollbar.place(x=762, y=100, height=250)
         self.configfile.configure(yscrollcommand=scrollbar.set)
 
@@ -1584,19 +1590,19 @@ from past mistakes and current successes, we can work towards a more sustainable
 
         # Title label
         title_label=tk.Label(self.main_frame, text="Help Page", 
-                               font=("Helvetica", 30), fg="black", 
-                               bg="oldlace")
+                             font=("Helvetica", 30), fg="black", 
+                             bg="oldlace")
         title_label.place(x=255, y=5)
 
         # Create a Text widget to display file contents
         self.configfile=Text(self.main_frame, wrap="word", bd=0, 
-                               bg="oldlace", font=("Helvetica", 13))
+                             bg="oldlace", font=("Helvetica", 13))
         self.configfile.config(state='normal')  
         self.configfile.place(x=0, y=100, width=775, height=250)
 
         # Add a scrollbar to the canvas
         scrollbar=ttk.Scrollbar(self.main_frame, orient=tk.VERTICAL, 
-                                  command=self.configfile.yview)
+                                command=self.configfile.yview)
         scrollbar.place(x=762, y=100, height=250)
         self.configfile.configure(yscrollcommand=scrollbar.set)
 
@@ -1668,46 +1674,47 @@ from past mistakes and current successes, we can work towards a more sustainable
             profile_frame.place(x=240, y=45)  
 
             title_label=tk.Label(profile_frame, text="Profile Information", 
-                                   font=("Helvetica", 20, "bold"), 
-                                   bg="oldlace", fg="black")
+                                 font=("Helvetica", 20, "bold"), 
+                                 bg="oldlace", fg="black")
             title_label.grid(row=0, column=0, columnspan=2, pady=(5, 20))
 
             info_label=tk.Label(self.main_frame, text="Your profile details"+
-                                  " and all your quiz results.", 
-                            font=("Helvetica", 15), fg="green", bg="oldlace")
+                                " and all your quiz results.", 
+                                font=("Helvetica", 15), fg="green", 
+                                bg="oldlace")
             info_label.place(x=155, y=10)
 
             labels=["First Name:", "Username:", 
                       "Date of Birth:", "Password:"]
             values=[self.user_info['first_name'], self.user_info['username'], 
-                      self.user_info['date_of_birth'], 
-                      self.user_info['password']]
+                    self.user_info['date_of_birth'], 
+                    self.user_info['password']]
 
             for i, (label_text, value_text) in enumerate(zip(labels, values)):
                 label=tk.Label(profile_frame, text=label_text, 
-                                 font=("Helvetica", 15, "bold"), bg="oldlace", 
-                                 fg="black", anchor="w")
+                               font=("Helvetica", 15, "bold"), bg="oldlace", 
+                               fg="black", anchor="w")
                 label.grid(row=i+1, column=0, sticky="w", padx=(0, 20), pady=5)
                 value=tk.Label(profile_frame, text=value_text, 
-                                 font=("Helvetica", 15), bg="oldlace", 
-                                 fg="black", anchor="w")
+                               font=("Helvetica", 15), bg="oldlace", 
+                               fg="black", anchor="w")
                 value.grid(row=i+1, column=1, sticky="w", pady=5)
         else:
             label=tk.Label(self.main_frame, text="Profile information not"+
-                             " available", font=("Helvetica", 16), fg="black", 
-                             bg="oldlace")
+                           " available", font=("Helvetica", 16), fg="black", 
+                           bg="oldlace")
             label.place(x=250, y=60)  
 
         # Label saying 'quiz results:'
         quiz_label=tk.Label(self.main_frame, text="Quiz Results:", 
-                              font=("Helvetica", 18, "bold"), fg="black", 
-                              bg="oldlace")
+                            font=("Helvetica", 18, "bold"), fg="black", 
+                            bg="oldlace")
         quiz_label.place(x=275, y=280)
 
         # Create a Text widget to display file contents
         text_widget=tk.Text(self.main_frame, wrap="word", 
-                              font=("Helvetica", 13, "bold"), bg="oldlace", 
-                              bd=0, fg="black", width=60, height=17)
+                            font=("Helvetica", 13, "bold"), bg="oldlace", 
+                            bd=0, fg="black", width=60, height=17)
         text_widget.place(x=140, y=320, width=485, height=280)
 
         # Add the code to show the file content below the profile information
@@ -1736,15 +1743,15 @@ from past mistakes and current successes, we can work towards a more sustainable
                                        " quizzes.")
         else:
             no_file_label=tk.Label(self.main_frame, text="File not found", 
-                                     font=("Helvetica", 16), fg="black", 
-                                     bg="oldlace")
+                                   font=("Helvetica", 16), fg="black", 
+                                   bg="oldlace")
             no_file_label.place(x=250, y=250)  
 
         text_widget.config(state=tk.DISABLED)
 
         # Add scrollbar
         scrollbar1=ttk.Scrollbar(self.main_frame, orient=tk.VERTICAL, 
-                                   command=text_widget.yview)
+                                 command=text_widget.yview)
         scrollbar1.place(x=615, y=320, height=280)
         text_widget.configure(yscrollcommand=scrollbar1.set)
 
@@ -1758,22 +1765,22 @@ from past mistakes and current successes, we can work towards a more sustainable
         popup_q1.resizable(False, False)
 
         # Calculate center position
-        window_width=1050
-        window_height=650
+        window_w=1050  # Window width  
+        window_h=650   # Window height
         screen_width=popup_q1.winfo_screenwidth()
         screen_height=popup_q1.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_position=(screen_width-window_w)//2
+        y_position=(screen_height-window_h)//4
 
         # Set window geometry
-        popup_q1.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        popup_q1.geometry(f"{window_w}x{window_h}+{x_position}+{y_position}")
 
         result=mb.askquestion("Option", "Do you want a randomised "+
-                                        "order of the questions, or the "+
-                                        "original order?\n(Yes for "+
-                                        "randomised, No for original)", 
-                                        parent=self.dashboard_window)
+                              "order of the questions, or the "+
+                              "original order?\n(Yes for "+
+                              "randomised, No for original)", 
+                              parent=self.dashboard_window)
 
         # Opens based on user repsonse from the question messagebox 
         if result=='yes':

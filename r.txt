@@ -68,3 +68,69 @@ Date: 18/08/2024 15:53:50
 Correct: 3
 Wrong: 12
 Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 19:58:56
+Correct: 4
+Wrong: 11
+Score: 26%
+
+Quiz scores: 
+Date: 22/08/2024 20:02:32
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:03:43
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:04:08
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:07:17
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:08:10
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:09:49
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:11:35
+Correct: 3
+Wrong: 12
+Score: 20%
+
+Quiz scores: 
+Date: 22/08/2024 20:13:16
+Correct: 9
+Wrong: 6
+Score: 60%
+
+Quiz scores: 
+Date: 22/08/2024 20:16:35
+Correct: 6
+Wrong: 9
+Score: 40%
+
+Quiz scores: 
+Date: 22/08/2024 20:17:12
+Correct: 5
+Wrong: 10
+Score: 33%

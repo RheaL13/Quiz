@@ -159,24 +159,24 @@ class MainWindow:
     '''Main window code.'''
     def __init__(self, master):
         '''Basic code for the display of the window.'''
-        self.master=master
-        self.master.title("EcoSmart")
-        self.master.configure(bg="oldlace")
-        self.master.resizable(False, False)
+        self.mainwindow=master
+        self.mainwindow.title("EcoSmart")
+        self.mainwindow.configure(bg="oldlace")
+        self.mainwindow.resizable(False, False)
 
         # Calculate center position
-        window_width=1200
-        window_height=750
-        screen_width=self.master.winfo_screenwidth()
-        screen_height=self.master.winfo_screenheight()
+        window_w=1200
+        window_h=750
+        screen_width=self.mainwindow.winfo_screenwidth()
+        screen_height=self.mainwindow.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-window_w)//2
+        y_place=(screen_height-window_h)//4
 
         # Set window geometry
-        self.master.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.mainwindow.geometry(f"{window_w}x{window_h}+{x_place}+{y_place}")
 
-        self.firstwindow=tk.Frame(self.master, bg="oldlace")
+        self.firstwindow=tk.Frame(self.mainwindow, bg="oldlace")
         self.firstwindow.pack(fill="both", expand=True)
 
         # Title and headings of the window
@@ -244,7 +244,7 @@ class MainWindow:
         ]
 
         for i, (text, command) in enumerate(buttons):
-            btn=tk.Button(self.master, text=text, width=11, height=2,
+            btn=tk.Button(self.mainwindow, text=text, width=11, height=2,
                             font=("Helvetica", 10, "bold"), fg="green", 
                             bg="white", command=command)
             btn.place(x=50, y=50+i*100)
@@ -254,7 +254,7 @@ class MainWindow:
         result=mb.askquestion("Exit", "Are you sure you want to exit"+
                                 " the program now?")
         if result=="yes":
-            self.master.destroy()
+            self.mainwindow.destroy()
 
     def open_popup(self):
         '''Tell user to sign in / login first if side bar buttons are 
@@ -295,16 +295,16 @@ class SignUpWindow:
         self.signup_window.resizable(False, False)
 
         # Calculate center position
-        window_width=600
-        window_height=550
+        w_w=600  # Window width
+        w_h=550  # Window height
         screen_width=self.signup_window.winfo_screenwidth()
         screen_height=self.signup_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.signup_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.signup_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         # Headings for the different entries
         title=tk.Label(self.signup_window, text="Sign Up", 
@@ -475,7 +475,7 @@ class SignUpWindow:
     
     def open_dashboard(self):
         '''Open the dashboard window when all completed.'''
-        self.dashboard=DashboardWindow(self.parent.master, 
+        self.dashboard=DashboardWindow(self.parent.mainwindow, 
                                          self.parent.pending_user_info)
     
     # Saving the data if all the entries is correctly inputted
@@ -525,16 +525,16 @@ class LoginWindow:
         self.login_window.resizable(False, False)
 
         # Calculate center position
-        window_width=600
-        window_height=320
+        w_w=600  # Window width
+        w_h=320  # window height
         screen_width=self.login_window.winfo_screenwidth()
         screen_height=self.login_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.login_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.login_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         # Headings for the different entries
         title=tk.Label(self.login_window, text="Login", 
@@ -606,7 +606,7 @@ class LoginWindow:
 
     def open_dashboard(self):
         '''Open the dashboard window when all completed.'''
-        self.dashboard=DashboardWindow(self.parent.master, 
+        self.dashboard=DashboardWindow(self.parent.mainwindow, 
                                          self.parent.pending_user_info)
 
     # Validating all the entry fields (data collected from user)
@@ -971,7 +971,7 @@ class DashboardWindow:
     '''Code for the window after user had logged in.'''
     def __init__(self, master, user_info):
         '''Basic functionality and display for the window.'''
-        self.master=master
+        self.main1=master
         self.user_info=user_info
         self.dashboard_window=tk.Toplevel(master)
         self.dashboard_window.title("Dashboard")
@@ -979,16 +979,16 @@ class DashboardWindow:
         self.dashboard_window.resizable(False, False)
 
         # Calculate center position
-        window_width=1200
-        window_height=750
+        w_w=1200  # Window width
+        w_h=750  # window height
         screen_width=self.dashboard_window.winfo_screenwidth()
         screen_height=self.dashboard_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.dashboard_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.dashboard_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         title=tk.Label(self.dashboard_window, text="EcoSmart", 
                          font=("Helvetica", 20, "bold"), fg="green", 
@@ -1024,7 +1024,7 @@ class DashboardWindow:
         result=mb.askquestion("Exit", "Are you sure you want to exit the "+
                                 "program now?", parent=self.dashboard_window)
         if result=="yes":
-            self.master.destroy()
+            self.main1.destroy()
 
     def signout(self):
         '''Verify if the user wants to sign out.'''
@@ -1330,22 +1330,22 @@ from past mistakes and current successes, we can work towards a more sustainable
         '''Window where there are videos and pictures that are eductational
         for the topic. 
         '''
-        self.photos_window=tk.Toplevel(self.master)
+        self.photos_window=tk.Toplevel(self.main1)
         self.photos_window.title("Photo / Videos")
         self.photos_window.configure(bg="oldlace")
         self.photos_window.resizable(False, False)
 
         # Calculate center position
-        window_width=1000
-        window_height=600
+        w_w=1000  # Window width
+        w_h=600  # window height
         screen_width=self.photos_window.winfo_screenwidth()
         screen_height=self.photos_window.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_place=(screen_width-w_w)//2
+        y_place=(screen_height-w_h)//4
 
         # Set window geometry
-        self.photos_window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.photos_window.geometry(f"{w_w}x{w_h}+{x_place}+{y_place}")
 
         title=tk.Label(self.photos_window, text="EcoSmart", 
                          font=("Helvetica", 20, "bold"), fg="green", 
@@ -1764,21 +1764,21 @@ from past mistakes and current successes, we can work towards a more sustainable
         '''Asks the user which kind of quiz they want, random or normal and
         will open whichever one they choose (the different classes).
         '''
-        popup_q1=tk.Toplevel()
-        popup_q1.title("QUIZ")
-        popup_q1.resizable(False, False)
+        quiz_popup=tk.Toplevel()  # Name of the quiz window is 'w'
+        quiz_popup.title("QUIZ")
+        quiz_popup.resizable(False, False)
 
         # Calculate center position
-        window_width=1050
-        window_height=650
-        screen_width=popup_q1.winfo_screenwidth()
-        screen_height=popup_q1.winfo_screenheight()
+        window_w=1050  # Window width  
+        window_h=650   # Window height
+        screen_width=quiz_popup.winfo_screenwidth()
+        screen_height=quiz_popup.winfo_screenheight()
 
-        x_position=(screen_width-window_width)//2
-        y_position=(screen_height-window_height)//4
+        x_position=(screen_width-window_w)//2
+        y_position=(screen_height-window_h)//4
 
         # Set window geometry
-        popup_q1.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        quiz_popup.geometry(f"{window_w}x{window_h}+{x_position}+{y_position}")
 
         result=messagebox.askquestion("Option", "Do you want a randomised "+
                                         "order of the questions, or the "+
@@ -1788,11 +1788,11 @@ from past mistakes and current successes, we can work towards a more sustainable
 
         # Opens based on user repsonse from the question messagebox 
         if result=='yes':
-            popup_q1.attributes('-topmost', True)  # keep window on top
-            RandomQuiz(popup_q1, self.user_info)
+            quiz_popup.attributes('-topmost', True)  # keep window on top
+            RandomQuiz(quiz_popup, self.user_info)
         else:
-            popup_q1.attributes('-topmost', True)  # keep window on top
-            Quiz(popup_q1, self.user_info)
+            quiz_popup.attributes('-topmost', True)  # keep window on top
+            Quiz(quiz_popup, self.user_info)
 
 # To run the entire program (from beginning)
 root=tk.Tk()

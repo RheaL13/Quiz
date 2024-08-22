@@ -677,7 +677,7 @@ class R_Quiz:
         if final:
             self.progress_var.set(100)
         else:
-            self.progress_var.set((self.q_no / self.data_size) * 100)
+            self.progress_var.set(() * 100)
 
 class Quiz:
     def __init__(self, root, user_info):

@@ -1,0 +1,10 @@
+First Name: Hash
+Birthdate: 05/04/1956
+Username: Hash
+Password: Hash1234
+
+Quiz scores: 
+Date: 19/08/2024 20:29:18
+Correct: 7
+Wrong: 8
+Score: 46%
